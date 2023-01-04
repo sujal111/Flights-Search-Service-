@@ -4,6 +4,7 @@ const express = require("express");
 
 
 const {PORT}= require('./config/serverConfig');
+const CityRepository=require('./respository/city-repository');
 const setupandstartServer=async() =>{
     //create exprss object
 
@@ -14,6 +15,8 @@ const setupandstartServer=async() =>{
     app.use(bodyParser.urlencoded({extended:true}))
     app.listen(PORT,() =>{
         console.log(`Server sarted at ${PORT}`);
+        const repo=new CityRepository();
+        repo.createCity({name:"New Delhi"})
     })
 }
 
